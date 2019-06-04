@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+
+{% block content %}
+<H1 class="alert alert-success"><i class="glyphicon glyphicon-tree-conifer"></i> Zoznam Pavilonov</H1>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Meno</th>
+      <th scope="col">Popis</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for pavilion in pavilions %}
+   <tr>
+      <th scope="row">{{ pavilion[0] }}</th>
+      <td>{{ pavilion[1] }}</td>
+      <td>{{ pavilion[2] }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

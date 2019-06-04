@@ -1,20 +1,24 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+from flask import render_template
+from zoo.model import *
+from zoo import app
 
-app = Flask("Zoo")
-Bootstrap(app)
 
 @app.route("/")
 def home():
-    return render_template("main.html")
+    zoo = Zoo.query.all()[0]
+    data = zoo.pavilions
+    return render_template("main.html", data=data)
+
 
 @app.route("/pavilions")
 def pavilions():
-    data = ["Vodny pavilon", "Piesocny pavilon"]
+    pavilions = Pavilions.query.all()
+    data = [(pavilion.id, pavilion.name, pavilion.description) for pavilion in pavilions]
     return render_template(
         "pavilions.html",
         pavilions=data
     )
+
 
 @app.route("/animals")
 def animals():
@@ -24,6 +28,7 @@ def animals():
         animals=data
     )
 
+
 @app.route("/shops")
 def shops():
     data = ["Surikata SHOP", "Lev SHOP", "Zaba SHOP"]
@@ -32,5 +37,6 @@ def shops():
         shops=data
     )
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80, debug=True)
+    app.run(debug=True)
