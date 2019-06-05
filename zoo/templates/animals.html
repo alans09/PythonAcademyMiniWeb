@@ -3,7 +3,28 @@
 {% block content %}
 <H1 class="alert alert-info"><i class="glyphicon glyphicon-knight"></i> Zoznam Zvierat</H1>
 <hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Meno</th>
+      <th scope="col">Typ</th>
+      <th scope="col">Vek</th>
+      <th scope="col">Pohlavie</th>
+      <th scope="col">Popis</th>
+    </tr>
+  </thead>
+  <tbody>
 {% for animal in animals %}
-<p>{{ animal }}</p>
+   <tr>
+      <th scope="row">{{ animal[0] }}</th>
+      <td>{{ animal[1] }}</td>
+      <td>{{ animal[2] }}</td>
+      <td>{{ animal[3] }}</td>
+      <td>{{ animal[4] }}</td>
+      <td>{{ animal[5] }}</td>
+    </tr>
 {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

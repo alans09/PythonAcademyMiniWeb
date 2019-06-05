@@ -3,7 +3,24 @@
 {% block content %}
 <H1 class="alert alert-warning"><i class="glyphicon glyphicon-euro"></i> Zoznam Obchodov</H1>
 <hr>
-{% for shop in shops%}
-<p>{{ shop }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Meno</th>
+      <th scope="col">Popis</th>
+      <th scope="col">Tovar</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for shop in shops %}
+   <tr>git
+      <th scope="row">{{ shop[0] }}</th>
+      <td>{{ shop[1] }}</td>
+      <td>{{ shop[2] }}</td>
+      <td>{{ shop[3] }}</td>
+    </tr>
 {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

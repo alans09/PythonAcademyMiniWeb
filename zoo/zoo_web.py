@@ -22,7 +22,9 @@ def pavilions():
 
 @app.route("/animals")
 def animals():
-    data = ["Surikata", "Lev", "Zaba"]
+#    data = ["Surikata", "Lev", "Zaba"]
+    animals = Animals.query.all()
+    data = [(animal.id, animal.name, animal.type, animal.age, animal.sex, animal.description) for animal in animals]
     return render_template(
         "animals.html",
         animals=data
@@ -31,7 +33,9 @@ def animals():
 
 @app.route("/shops")
 def shops():
-    data = ["Surikata SHOP", "Lev SHOP", "Zaba SHOP"]
+#    data = ["Surikata SHOP", "Lev SHOP", "Zaba SHOP"]
+    shops = Shops.query.all()
+    data = [(shop.id, shop.name, shop.description, shop.goods) for shop in shops]
     return render_template(
         "shops.html",
         shops=data
