@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block content %}
+<H1 class="alert alert-success"><i class="glyphicon glyphicon-tree-conifer"></i> Detail pavilonu<H1>
+<hr>
+<H1>{{ data[1] }}</H1>
+<hr>
+<H4>Popis: {{ data[2] }}</H4>
+    <br>
+<p>Zvierata</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Meno</th>
+      <th scope="col">Pohlavie</th>
+      <th scope="col">Vek</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for animal in data[3] %}
+   <tr>
+      <th scope="row">{{ animal [0] }}</th>
+      <td>{{ animal[1] }}</td>
+      <td>{{ animal[2] }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+    <a href="/pavilions" class="btn btn-default">Spat na prehlad pavilonov</a>
+{% endblock %}

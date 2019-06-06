@@ -3,7 +3,7 @@
 {% block content %}
 <H1 class="alert alert-success"><i class="glyphicon glyphicon-tree-conifer"></i> Zoznam Pavilonov</H1>
 <hr>
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -13,9 +13,9 @@
   </thead>
   <tbody>
 {% for pavilion in pavilions %}
-   <tr>
-      <th scope="row">{{ pavilion[0] }}</th>
-      <td>{{ pavilion[1] }}</td>
+   <tr onclick="window.location='/pavilion/{{pavilion[0]}}'">
+       <th scope="row">{{ pavilion[0] }}</th>
+       <td><a href="/pavilion/{{pavilion[0]}}">{{ pavilion[1] }}</a></td>
       <td>{{ pavilion[2] }}</td>
     </tr>
 {% endfor %}
