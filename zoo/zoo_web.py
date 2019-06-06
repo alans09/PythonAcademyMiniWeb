@@ -6,10 +6,8 @@ from zoo import app
 @app.route("/")
 def home():
     zoo = Zoo.query.all()[0]
-
     data = zoo.pavilions
     return render_template("main.html", data=data)
-
 
 @app.route("/pavilions")
 def pavilions():
@@ -21,9 +19,9 @@ def pavilions():
     )
 
 
-@app.route("/pavilion/<id>")
-def pavilion_detail(id):
-    pavilion = Pavilions.query.get(int(id))
+@app.route("/pavilion/<id_>")
+def pavilion_detail(id_):
+    pavilion = Pavilions.query.get(int(id_))
     data = (pavilion.id, pavilion.name, pavilion.description,
             [(animal.name, animal.sex, animal.age) for animal in pavilion.animals]
             )
@@ -32,7 +30,8 @@ def pavilion_detail(id):
 
 @app.route("/animals")
 def animals():
-    data = ["Surikata", "Lev", "Zaba"]
+    animals = Animals.query.all()
+    data = [(animal.id, animal.name, animal.age) for animal in animals]
     return render_template(
         "animals.html",
         animals=data
